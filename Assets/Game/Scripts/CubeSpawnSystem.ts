@@ -1,94 +1,79 @@
 
-namespace game 
-{
+namespace game {
     /** New System */
-    export class CubeSpawnSystem extends ut.ComponentSystem 
-	{
-		vertices: Vector2[] = [new Vector2(0.0, 0.0), new Vector2(0.0, 0.0), new Vector2(0.0, 0.0), new Vector2(0.0, 0.0)];
-		indices: number[] = [0, 1, 2, 2, 3, 0];
-							
-		static frontColour: ut.Core2D.Color = new ut.Core2D.Color(1.0, 0.9, 0.2, 1.0);
-		static sideColour: ut.Core2D.Color = new ut.Core2D.Color(1.0, 0.8, 0.5, 1.0);
-		static topColour: ut.Core2D.Color = new ut.Core2D.Color(1.0, 0.6, 0.3, 1.0);
+    export class CubeSpawnSystem extends ut.ComponentSystem {
 
-        OnUpdate():void 
-		{
-			if (GameService.gameOver) {
-				return;
-			}
+        public static frontColour: ut.Core2D.Color = new ut.Core2D.Color(1.0, 0.9, 0.2, 1.0);
+        public static sideColour: ut.Core2D.Color = new ut.Core2D.Color(1.0, 0.8, 0.5, 1.0);
+        public static topColour: ut.Core2D.Color = new ut.Core2D.Color(1.0, 0.6, 0.3, 1.0);
+        public vertices: Vector2[] = [new Vector2(0.0, 0.0), new Vector2(0.0, 0.0), new Vector2(0.0, 0.0), new Vector2(0.0, 0.0)];
+        public indices: number[] = [0, 1, 2, 2, 3, 0];
 
-			this.world.forEach([ut.Entity, game.CubeSpawner], (entity, spawner) => 
-			{
-				ut.Core2D.TransformService.destroyTree(this.world, entity);
+        public OnUpdate(): void {
+            if (GameService.gameOver) {
+                return;
+            }
 
-				let cube: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeGroup")[0];
-	
-				let cubeData: game.CubeData = this.world.getComponentData(cube, game.CubeData);
-				cubeData.startX = spawner.startX;
-				this.world.setComponentData(cube, cubeData);
+            this.world.forEach([ut.Entity, game.CubeSpawner], (entity, spawner) => {
+                ut.Core2D.TransformService.destroyTree(this.world, entity);
 
-				let cubePos: Vector3 = new Vector3(spawner.startX, 0.0, cubeData.startDistance);
-				this.world.addComponentData(cube, new ut.Core2D.TransformLocalPosition(cubePos));
+                const cube: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeGroup")[0];
 
-				let i: number;
-				const visibleFaces: number = 4;
-				for (i = 0; i < visibleFaces; i++)
-				{
-					let cubeFace: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeFaceGroup")[0];
-					this.world.setComponentData(cubeFace, new ut.Core2D.TransformNode(cube));
+                const cubeData: game.CubeData = this.world.getComponentData(cube, game.CubeData);
+                cubeData.startX = spawner.startX;
+                this.world.setComponentData(cube, cubeData);
 
-					let zDepth: number;
-					const cubeScale: number = 0.25;
+                const cubePos: Vector3 = new Vector3(spawner.startX, 0.0, cubeData.startDistance);
+                this.world.addComponentData(cube, new ut.Core2D.TransformLocalPosition(cubePos));
 
-					// Small hack for correct depth ordering based on height.						
-					let sideDepth: number;
-					let topDepth: number;
-					if (GameService.menuVisible)
-					{
-						sideDepth = 0.0;
-						topDepth = -cubeScale * 0.5;
-					}
-					else
-					{
-						sideDepth = -cubeScale * 0.5;
-						topDepth = 0.0;
-					}
+                let i: number;
+                const visibleFaces: number = 4;
+                for (i = 0; i < visibleFaces; i++) {
+                    const cubeFace: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeFaceGroup")[0];
+                    this.world.setComponentData(cubeFace, new ut.Core2D.TransformNode(cube));
 
-					let faceData: game.CubeFaceData = new game.CubeFaceData();
-					let faceColour: ut.Core2D.Color;
-					if (i == 0) // Front
-					{
-						faceData.vertices = [new Vector3(-cubeScale, -cubeScale, 0.0), new Vector3(-cubeScale, cubeScale, 0.0), new Vector3(cubeScale, cubeScale, 0.0), new Vector3(cubeScale, -cubeScale, 0.0)];
-						faceColour = CubeSpawnSystem.frontColour;
-						zDepth = -cubeScale;
-					}
-					else if (i == 1) // Left
-					{
-						faceData.vertices = [new Vector3(-cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(-cubeScale, cubeScale, cubeScale * 4.0), new Vector3(-cubeScale, cubeScale, 0.0), new Vector3(-cubeScale, -cubeScale, 0.0)];
-						faceColour = CubeSpawnSystem.sideColour;
-						zDepth = sideDepth;
-					}
-					else if (i == 2) // Top
-					{
-						faceData.vertices = [new Vector3(-cubeScale, -cubeScale, 0.0), new Vector3(-cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, 0.0)];
-						faceColour = CubeSpawnSystem.topColour;
-						zDepth = topDepth;
-					}
-					else if (i == 3) // Right
-					{
-						faceData.vertices = [new Vector3(cubeScale, -cubeScale, 0.0), new Vector3(cubeScale, cubeScale, 0.0), new Vector3(cubeScale, cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, cubeScale * 4.0)];
-						faceColour = CubeSpawnSystem.sideColour;
-						zDepth = sideDepth;
-					}
-					faceData.startColour = faceColour;
-					this.world.setComponentData(cubeFace, faceData);
-											
-					let facePos: Vector3 = new Vector3(0.0, 0.0, zDepth)
-					this.world.setComponentData(cubeFace, new ut.Core2D.TransformLocalPosition(facePos));
-					this.world.addComponentData(cubeFace, new ut.Core2D.Shape2D(this.vertices, this.indices));									
-					this.world.addComponentData(cubeFace, new ut.Core2D.Shape2DRenderer(cubeFace, faceColour));
-				}
-			});
+                    let zDepth: number;
+                    const cubeScale: number = 0.25;
+
+                    // Small hack for correct depth ordering based on height.
+                    let sideDepth: number;
+                    let topDepth: number;
+                    if (GameService.menuVisible) {
+                        sideDepth = 0.0;
+                        topDepth = -cubeScale * 0.5;
+                    } else {
+                        sideDepth = -cubeScale * 0.5;
+                        topDepth = 0.0;
+                    }
+
+                    const faceData: game.CubeFaceData = new game.CubeFaceData();
+                    let faceColour: ut.Core2D.Color;
+                    if (i == 0) {
+                        faceData.vertices = [new Vector3(-cubeScale, -cubeScale, 0.0), new Vector3(-cubeScale, cubeScale, 0.0), new Vector3(cubeScale, cubeScale, 0.0), new Vector3(cubeScale, -cubeScale, 0.0)];
+                        faceColour = CubeSpawnSystem.frontColour;
+                        zDepth = -cubeScale;
+                    } else if (i == 1) {
+                        faceData.vertices = [new Vector3(-cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(-cubeScale, cubeScale, cubeScale * 4.0), new Vector3(-cubeScale, cubeScale, 0.0), new Vector3(-cubeScale, -cubeScale, 0.0)];
+                        faceColour = CubeSpawnSystem.sideColour;
+                        zDepth = sideDepth;
+                    } else if (i == 2) {
+                        faceData.vertices = [new Vector3(-cubeScale, -cubeScale, 0.0), new Vector3(-cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, 0.0)];
+                        faceColour = CubeSpawnSystem.topColour;
+                        zDepth = topDepth;
+                    } else if (i == 3) {
+                        faceData.vertices = [new Vector3(cubeScale, -cubeScale, 0.0), new Vector3(cubeScale, cubeScale, 0.0), new Vector3(cubeScale, cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, cubeScale * 4.0)];
+                        faceColour = CubeSpawnSystem.sideColour;
+                        zDepth = sideDepth;
+                    }
+                    faceData.startColour = faceColour;
+                    this.world.setComponentData(cubeFace, faceData);
+
+                    const facePos: Vector3 = new Vector3(0.0, 0.0, zDepth);
+                    this.world.setComponentData(cubeFace, new ut.Core2D.TransformLocalPosition(facePos));
+                    this.world.addComponentData(cubeFace, new ut.Core2D.Shape2D(this.vertices, this.indices));
+                    this.world.addComponentData(cubeFace, new ut.Core2D.Shape2DRenderer(cubeFace, faceColour));
+                }
+            });
         }
     }
 }

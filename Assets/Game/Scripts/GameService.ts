@@ -1,138 +1,122 @@
-namespace game 
-{
-    export class GameService 
-    {    
-        private static mainGroup: string = 'game.MainGroup';
-        private static cubeGroup: string = 'game.CubeGroup';
-        private static cubeFaceGroup: string = 'game.CubeFaceGroup';
-		private static titleGroup: string = 'game.TitleGroup';
-		private static gameUiGroup: string = 'game.GameUIGroup';
-		private static gameOverGroup: string = 'game.GameOverGroup';
-		private static gameOverDelay: number = 1000;
+namespace game {
+    export class GameService {
+        public static gameOver: boolean;
+        public static menuVisible: boolean = true;
+        public static camOffset: Vector2 = new Vector2(0.0, 1.0);
+        public static projMatrix: utmath.Matrix4;
+        public static score: number = 0;
+        public static highscore: number = 0;
 
-		static gameOver: boolean;
-		static menuVisible: boolean = true;
-		static camOffset: Vector2 = new Vector2(0.0, 1.0);
-		static projMatrix: utmath.Matrix4;
-		static score: number = 0;
-		static highscore: number = 0;
-		
-		static linkCanvas(world: ut.World, canvasEntity: ut.Entity) {			
-			let camEntity: ut.Entity = world.getEntityByName("Camera");
-			let canvas: ut.UILayout.UICanvas = world.getComponentData(canvasEntity, ut.UILayout.UICanvas);
-			canvas.camera = camEntity;
-			world.setComponentData(canvasEntity, canvas);
-		}
+        public static linkCanvas(world: ut.World, canvasEntity: ut.Entity) {
+            const camEntity: ut.Entity = world.getEntityByName("Camera");
+            const canvas: ut.UILayout.UICanvas = world.getComponentData(canvasEntity, ut.UILayout.UICanvas);
+            canvas.camera = camEntity;
+            world.setComponentData(canvasEntity, canvas);
+        }
 
-		static init(world: ut.World)
-		{
-			if (this.menuVisible) {
-				ut.EntityGroup.instantiate(world, this.titleGroup);
+        public static init(world: ut.World) {
+            if (this.menuVisible) {
+                ut.EntityGroup.instantiate(world, this.titleGroup);
 
-				let canvasEntity: ut.Entity = world.getEntityByName("TitleCanvas");
-				this.linkCanvas(world, canvasEntity);
+                const canvasEntity: ut.Entity = world.getEntityByName("TitleCanvas");
+                this.linkCanvas(world, canvasEntity);
 
-				// Change to keyboard text.
-				if (!ut.Core2D.Input.isTouchSupported()) {
-					let tapEntity: ut.Entity = world.getEntityByName("Tap Text");
-					let tapText: ut.Text.Text2DRenderer = world.getComponentData(tapEntity, ut.Text.Text2DRenderer);
-					tapText.text = "Click to Play";
-					world.setComponentData(tapEntity, tapText);
-					
-					let helpEntity: ut.Entity = world.getEntityByName("Help Text");
-					let helpText: ut.Text.Text2DRenderer = world.getComponentData(helpEntity, ut.Text.Text2DRenderer);
-					helpText.text = "Use A and D keys. Avoid the cubes!";
-					world.setComponentData(helpEntity, helpText);
-				}
-			} else {
-				ut.EntityGroup.instantiate(world, this.gameUiGroup);
+                // Change to keyboard text.
+                if (!ut.Core2D.Input.isTouchSupported()) {
+                    const tapEntity: ut.Entity = world.getEntityByName("Tap Text");
+                    const tapText: ut.Text.Text2DRenderer = world.getComponentData(tapEntity, ut.Text.Text2DRenderer);
+                    tapText.text = "Click to Play";
+                    world.setComponentData(tapEntity, tapText);
 
-				let canvasEntity: ut.Entity = world.getEntityByName("GameUICanvas");
-				this.linkCanvas(world, canvasEntity);
+                    const helpEntity: ut.Entity = world.getEntityByName("Help Text");
+                    const helpText: ut.Text.Text2DRenderer = world.getComponentData(helpEntity, ut.Text.Text2DRenderer);
+                    helpText.text = "Use A and D keys. Avoid the cubes!";
+                    world.setComponentData(helpEntity, helpText);
+                }
+            } else {
+                ut.EntityGroup.instantiate(world, this.gameUiGroup);
 
-				// Update highscore text.
-				let highscoreEntity: ut.Entity = world.getEntityByName("Highscore Text");
-				let highscoreText: ut.Text.Text2DRenderer = world.getComponentData(highscoreEntity, ut.Text.Text2DRenderer);
-				highscoreText.text = "Best: " + this.highscore.toFixed(0);
-				world.setComponentData(highscoreEntity, highscoreText);
-			}
+                const canvasEntity: ut.Entity = world.getEntityByName("GameUICanvas");
+                this.linkCanvas(world, canvasEntity);
 
-			// Initialise projection matrix.
-			// Note: Aspect ratio is always 1.0 due to the camera auto scaling for some reason.
-			let deg2Rad: number = Math.PI / 180.0;
-			let near: number = 0.01;
-			let far: number = 30.0;
-			let vFOV: number = 80.0;
-			let fovScale: number = 1.0 / Math.tan(deg2Rad * vFOV / 2.0);
-			let clipRange: number = near - far;
-			this.projMatrix = new utmath.Matrix4();
-			this.projMatrix.set(
-				fovScale, 0.0, 0.0, 0.0,
-				0.0, fovScale, 0.0, 0.0,
-				0.0, 0.0, (far + near) / clipRange, -1.0,
-				0.0, 0.0, 2.0 * far * near / clipRange, 0.0);
-		};
+                // Update highscore text.
+                const highscoreEntity: ut.Entity = world.getEntityByName("Highscore Text");
+                const highscoreText: ut.Text.Text2DRenderer = world.getComponentData(highscoreEntity, ut.Text.Text2DRenderer);
+                highscoreText.text = "Best: " + this.highscore.toFixed(0);
+                world.setComponentData(highscoreEntity, highscoreText);
+            }
 
-		static triggerGameOver(world: ut.World)
-		{
-			this.gameOver = true;
-			setTimeout(() => 
-			{ 
-				ut.EntityGroup.instantiate(world, this.gameOverGroup);
-				let canvasEntity: ut.Entity = world.getEntityByName("GameOverCanvas");
-				this.linkCanvas(world, canvasEntity);
+            // Initialise projection matrix.
+            // Note: Aspect ratio is always 1.0 due to the camera auto scaling for some reason.
+            const deg2Rad: number = Math.PI / 180.0;
+            const near: number = 0.01;
+            const far: number = 30.0;
+            const vFOV: number = 80.0;
+            const fovScale: number = 1.0 / Math.tan(deg2Rad * vFOV / 2.0);
+            const clipRange: number = near - far;
+            this.projMatrix = new utmath.Matrix4();
+            this.projMatrix.set(
+                fovScale, 0.0, 0.0, 0.0,
+                0.0, fovScale, 0.0, 0.0,
+                0.0, 0.0, (far + near) / clipRange, -1.0,
+                0.0, 0.0, 2.0 * far * near / clipRange, 0.0);
+        }
+        public static triggerGameOver(world: ut.World) {
+            this.gameOver = true;
+            setTimeout(() => {
+                ut.EntityGroup.instantiate(world, this.gameOverGroup);
+                const canvasEntity: ut.Entity = world.getEntityByName("GameOverCanvas");
+                this.linkCanvas(world, canvasEntity);
 
-				// Change to keyboard text.
-				if (!ut.Core2D.Input.isTouchSupported()) {
-					let tapEntity: ut.Entity = world.getEntityByName("Tap Text");
-					let tapText: ut.Text.Text2DRenderer = world.getComponentData(tapEntity, ut.Text.Text2DRenderer);
-					tapText.text = "Click to Retry";
-					world.setComponentData(tapEntity, tapText);
-				}
-			}, this.gameOverDelay);
-		}
+                // Change to keyboard text.
+                if (!ut.Core2D.Input.isTouchSupported()) {
+                    const tapEntity: ut.Entity = world.getEntityByName("Tap Text");
+                    const tapText: ut.Text.Text2DRenderer = world.getComponentData(tapEntity, ut.Text.Text2DRenderer);
+                    tapText.text = "Click to Retry";
+                    world.setComponentData(tapEntity, tapText);
+                }
+            }, this.gameOverDelay);
+        }
 
-        static restart(world: ut.World, delay: number, showTitle: boolean) 
+        public static restart(world: ut.World, delay: number, showTitle: boolean)
         {
-			if (delay <= 0)
-			{
-				this.newGame(world, showTitle);
-			}
-			else
-			{
-				setTimeout(() => 
-				{ 
-					this.newGame(world, showTitle);
-				}, delay);
-			}
-        };
+            if (delay <= 0) {
+                this.newGame(world, showTitle);
+            } else {
+                setTimeout(() => {
+                    this.newGame(world, showTitle);
+                }, delay);
+            }
+        }
+        public static newGame(world: ut.World, showTitle: boolean) {
+            ut.Time.reset();
 
-        static newGame(world: ut.World, showTitle: boolean) 
-        {
-			console.log('starting new game.');
-			ut.Time.reset();
-			
-			this.score = 0;
-			this.gameOver = false;
+            this.score = 0;
+            this.gameOver = false;
 
-			ut.EntityGroup.destroyAll(world, this.cubeGroup);
-			ut.EntityGroup.destroyAll(world, this.cubeFaceGroup);
-			ut.EntityGroup.destroyAll(world, this.titleGroup);
-			ut.EntityGroup.destroyAll(world, this.gameUiGroup);
-			ut.EntityGroup.destroyAll(world, this.gameOverGroup);
-			ut.EntityGroup.destroyAll(world, this.mainGroup);
+            ut.EntityGroup.destroyAll(world, this.cubeGroup);
+            ut.EntityGroup.destroyAll(world, this.cubeFaceGroup);
+            ut.EntityGroup.destroyAll(world, this.titleGroup);
+            ut.EntityGroup.destroyAll(world, this.gameUiGroup);
+            ut.EntityGroup.destroyAll(world, this.gameOverGroup);
+            ut.EntityGroup.destroyAll(world, this.mainGroup);
 
-			ut.EntityGroup.instantiate(world, this.mainGroup);
+            ut.EntityGroup.instantiate(world, this.mainGroup);
 
-			this.menuVisible = showTitle;
-			if (!showTitle)
-			{
-				this.camOffset = new Vector2(0.0, 0.0);
-			}
-			else
-			{
-				this.camOffset = new Vector2(0.0, 1.0);			
-			}
-		};
+            this.menuVisible = showTitle;
+            if (!showTitle) {
+                this.camOffset = new Vector2(0.0, 0.0);
+            } else {
+                this.camOffset = new Vector2(0.0, 1.0);
+            }
+        }
+
+        private static mainGroup: string = "game.MainGroup";
+        private static cubeGroup: string = "game.CubeGroup";
+        private static cubeFaceGroup: string = "game.CubeFaceGroup";
+        private static titleGroup: string = "game.TitleGroup";
+        private static gameUiGroup: string = "game.GameUIGroup";
+        private static gameOverGroup: string = "game.GameOverGroup";
+        private static gameOverDelay: number = 1000;
     }
 }

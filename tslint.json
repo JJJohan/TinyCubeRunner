@@ -1,0 +1,9 @@
+{
+    "extends": "tslint:recommended",
+    "rules": {
+		"no-namespace": false,
+		"completed-docs": false,
+		"max-line-length": false,
+		"no-shadowed-variable": false
+    }
+}

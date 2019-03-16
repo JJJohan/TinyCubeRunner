@@ -22,22 +22,6 @@
         "Visibility": 0,
         "EditorOnly": false,
         "Versioned": true
-    }, {
-        "Id": "ebcc62dbaa73414690fd05ae4e1edb6a",
-        "Name": "minY",
-        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
-        "Array": false,
-        "Visibility": 0,
-        "EditorOnly": false,
-        "Versioned": true
-    }, {
-        "Id": "18d0ce91617848d6871484431e48b02c",
-        "Name": "maxY",
-        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
-        "Array": false,
-        "Visibility": 0,
-        "EditorOnly": false,
-        "Versioned": true
     }],
     "DefaultValue": {
         "Type": { "Id": "b8dfc2c38ecb484b8f40290fef8106a7", "Name": "Boundaries" }

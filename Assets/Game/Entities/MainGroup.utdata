@@ -44,9 +44,7 @@
         "Type": { "Id": "b8dfc2c38ecb484b8f40290fef8106a7", "Name": "Boundaries" },
         "Properties": {
             "minX": -3.5,
-            "maxX": 3.5,
-            "minY": 0,
-            "maxY": 5
+            "maxX": 3.5
         }
     }, {
         "Type": { "Id": "14eec96087f5437bbb98f6b43d3db5b9", "Name": "MoveSpeed" },
