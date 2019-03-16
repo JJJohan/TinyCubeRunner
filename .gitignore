@@ -1,0 +1,12 @@
+.vs/
+*.sln
+*.DotSettings.user
+tsconfig.json
+Assets/TextMesh Pro/*
+Assets/TinyCache/*
+Assets/TinySamples/*
+Library/*
+Logs/*
+Temp/*
+Tiny/*
+TinyExport/*

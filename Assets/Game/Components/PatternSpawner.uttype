@@ -1,0 +1,33 @@
+﻿[{
+    "$TypeId": 3,
+    "Id": "06a0d4c3e0284ce8b15fcb2e78750c09",
+    "Name": "PatternSpawner",
+    "ExportFlags": 0,
+    "Unlisted": false,
+    "Visibility": 0,
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "9b3dcd7d19574c5dbeb40c3ec63ab9cc",
+        "Name": "time",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }, {
+        "Id": "ab84766fbcbe45299e76f9c358acbe2b",
+        "Name": "delay",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "06a0d4c3e0284ce8b15fcb2e78750c09", "Name": "PatternSpawner" },
+        "Properties": {
+            "time": 1.5,
+            "delay": 1.5
+        }
+    }
+}]

@@ -1,0 +1,72 @@
+﻿[{
+    "$TypeId": 4,
+    "Id": "8d41046a73634bd3815b9ae061716c16",
+    "Name": "MainGroup",
+    "ExportFlags": 0,
+    "SerializedVersion": 0,
+    "Entities": [
+        { "$TypeId": 9, "Id": "c6da368eb1cb46758e07dc0784c70334", "Name": "Camera" },
+        { "$TypeId": 9, "Id": "790da21e77494ed1913d1ba3a7c97975", "Name": "Init" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "c6da368eb1cb46758e07dc0784c70334",
+    "Name": "Camera",
+    "Enabled": true,
+    "Static": false,
+    "Layer": 0,
+    "Components": [{
+        "Type": { "Id": "c895dbe72eb46ecb10d589d320151758", "Name": "TransformNode" }
+    }, {
+        "Type": { "Id": "12692383f3fef3bb74c209888c5b0939", "Name": "Camera2D" },
+        "Properties": {
+            "backgroundColor": {
+                "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
+                "Properties": {
+                    "r": 0.6603774,
+                    "g": 0.6448025,
+                    "b": 0.6448025,
+                    "a": 1
+                }
+            },
+            "clearFlags": {
+                "$TypeId": 8,
+                "Type": { "Id": "76a06ddd38e99125d930e77c6a287872", "Name": "CameraClearFlags" },
+                "Id": "9faedc246f34513076701ef66b5ad74f",
+                "Name": "SolidColor",
+                "Value": 1
+            }
+        }
+    }, {
+        "Type": { "Id": "82eb65835df949be8dbca130c06228da", "Name": "MoveWithInput" }
+    }, {
+        "Type": { "Id": "b8dfc2c38ecb484b8f40290fef8106a7", "Name": "Boundaries" },
+        "Properties": {
+            "minX": -3.5,
+            "maxX": 3.5,
+            "minY": 0,
+            "maxY": 5
+        }
+    }, {
+        "Type": { "Id": "14eec96087f5437bbb98f6b43d3db5b9", "Name": "MoveSpeed" },
+        "Properties": {
+            "speed": 3
+        }
+    }, {
+        "Type": { "Id": "70449d66178e0d9f66795c24f0fbbdfc", "Name": "TransformLocalPosition" }
+    }, {
+        "Type": { "Id": "06a0d4c3e0284ce8b15fcb2e78750c09", "Name": "PatternSpawner" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "790da21e77494ed1913d1ba3a7c97975",
+    "Name": "Init",
+    "Enabled": true,
+    "Static": false,
+    "Layer": 0,
+    "Components": [{
+        "Type": { "Id": "c507cbed4bef41b9bba70656b88d0bfb", "Name": "Init" }
+    }]
+}]

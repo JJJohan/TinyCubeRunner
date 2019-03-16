@@ -1,0 +1,101 @@
+﻿[{
+    "$TypeId": 1,
+    "Id": "35eebc6318e94d60a6406aaf958c9fd6",
+    "Name": "Game",
+    "ExportFlags": 0,
+    "SerializedVersion": 7,
+    "Settings": {
+        "CanvasWidth": 600,
+        "CanvasHeight": 800,
+        "EmbedAssets": false,
+        "CanvasAutoResize": true,
+        "RenderMode": 1,
+        "DefaultTextureSettings": {
+            "$TypeId": 2,
+            "Embedded": false,
+            "FormatType": 3,
+            "JpgCompressionQuality": 75,
+            "WebPCompressionQuality": 80
+        },
+        "DefaultAudioClipSettings": {
+            "$TypeId": 3,
+            "Embedded": false
+        },
+        "DefaultAnimationClipSettings": {
+            "$TypeId": 4,
+            "Embedded": false
+        },
+        "LocalWSServerPort": 17700,
+        "LocalHTTPServerPort": 19050,
+        "SingleFileHtml": false,
+        "MemorySize": 16,
+        "IncludeWebPDecompressor": false,
+        "RunBabel": false,
+        "MinifyJavaScript": true,
+        "LinkToSource": true,
+        "SymbolsInReleaseBuild": false
+    },
+    "Module": { "Id": "f49b5854116e403c857cbd13137c946a", "Name": "Main" },
+    "Configuration": { "$TypeId": 9, "Id": "2b3d6729f8bf436e9f01bdfd3c42f67b", "Name": "Configuration" }
+},
+{
+    "$TypeId": 2,
+    "Id": "f49b5854116e403c857cbd13137c946a",
+    "Name": "Main",
+    "SerializedVersion": 1,
+    "ExportFlags": 0,
+    "Namespace": "game",
+    "Options": 4,
+    "Dependencies": [
+        { "Id": "2af0cd3b47a732bf738688ceab312689", "Name": "UTiny.Core" },
+        { "Id": "a1b50987659c653138795a8f4079fc10", "Name": "UTiny.Math" },
+        { "Id": "ce3f1bd7050540b70d450a606e226ea2", "Name": "UTiny.Shared" },
+        { "Id": "f49b5854116e403c857cbd13137c946a", "Name": "Main" },
+        { "Id": "3aa8828c0eaa4fb0a2faaa1ee3f85c59", "Name": "UTiny.Flow" },
+        { "Id": "29e5e02a3a0442beb9e6828c78a7ff91", "Name": "UTiny.EntityGroup" },
+        { "Id": "494f9eba840c1f117459611e605884b0", "Name": "UTiny.Core2DTypes" },
+        { "Id": "404877ed746affa8a6081ad8161dd8de", "Name": "UTiny.EditorExtensions" },
+        { "Id": "dcb14cd3f313167b855850e2cd34055a", "Name": "UTiny.Shape2D" },
+        { "Id": "30097418841f56d73400bf82ee859ac9", "Name": "UTiny.Core2D" },
+        { "Id": "eae58004250dcd15a6c834b07677ca28", "Name": "UTiny.HTML" },
+        { "Id": "229e8d5fce9cf6b511ca82c89f1b58eb", "Name": "UTiny.Sprite2D" },
+        { "Id": "0bc66cc14cafcceaaebf78d21c72cede", "Name": "UTiny.Particles" },
+        { "Id": "e46c24fb4d9a01e79b109bbcf6d24260", "Name": "UTiny.UILayout" },
+        { "Id": "0b0e260844fa6632977aa15579b42291", "Name": "UTiny.Text" }
+    ],
+    "Assets": [{
+        "Object": { "$TypeId": 10, "Guid": "3834920e8e2fe4d42919eb6b5db23e9b", "FileId": 11400000, "Type": 2 }
+    }, {
+        "Object": { "$TypeId": 10, "Guid": "80209d66936e3cf48963d627339f3204", "FileId": 4900000, "Type": 3 }
+    }],
+    "StartupEntityGroup": { "Id": "8d41046a73634bd3815b9ae061716c16", "Name": "MainGroup" }
+},
+{
+    "$TypeId": 5,
+    "Id": "2b3d6729f8bf436e9f01bdfd3c42f67b",
+    "Name": "Configuration",
+    "Enabled": true,
+    "Static": false,
+    "Layer": 0,
+    "Components": [{
+        "Type": { "Id": "575fe161bc06950c954480d04c70c9ab", "Name": "DisplayInfo" },
+        "Properties": {
+            "width": 600,
+            "height": 800,
+            "autoSizeToFrame": true,
+            "renderMode": {
+                "$TypeId": 8,
+                "Type": { "Id": "c592d331c582f4083ec19af9e2d06b6d", "Name": "RenderMode" },
+                "Id": "28a2eb67a0b8c9846aca4711b541ab6e",
+                "Name": "Canvas",
+                "Value": 1
+            }
+        }
+    }, {
+        "Type": { "Id": "38283a6cef9faa790b5c9936163d59e3", "Name": "Physics2DConfig" }
+    }, {
+        "Type": { "Id": "b9cfebf5cbbd4f72ad16fc3737378aa7", "Name": "NewConfiguration" }
+    }, {
+        "Type": { "Id": "271b8173051149cbaa23ea3edea12bd9", "Name": "NewConfiguration" }
+    }]
+}]

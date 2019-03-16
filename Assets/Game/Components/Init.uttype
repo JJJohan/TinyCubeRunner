@@ -1,0 +1,12 @@
+﻿[{
+    "$TypeId": 3,
+    "Id": "c507cbed4bef41b9bba70656b88d0bfb",
+    "Name": "Init",
+    "ExportFlags": 0,
+    "Unlisted": false,
+    "Visibility": 0,
+    "TypeCode": "Component",
+    "DefaultValue": {
+        "Type": { "Id": "c507cbed4bef41b9bba70656b88d0bfb", "Name": "Init" }
+    }
+}]

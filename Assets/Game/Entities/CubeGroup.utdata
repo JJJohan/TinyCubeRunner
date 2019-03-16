@@ -1,0 +1,28 @@
+﻿[{
+    "$TypeId": 4,
+    "Id": "b385b20193a74c3787eb19a92a4a85b0",
+    "Name": "CubeGroup",
+    "ExportFlags": 0,
+    "SerializedVersion": 0,
+    "Entities": [
+        { "$TypeId": 9, "Id": "88b13c4df1a1474bb15491705aa873c3", "Name": "Cube" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "88b13c4df1a1474bb15491705aa873c3",
+    "Name": "Cube",
+    "Enabled": true,
+    "Static": false,
+    "Layer": 0,
+    "Components": [{
+        "Type": { "Id": "b113e9da67564a98b1b37d144da7e757", "Name": "CubeData" }
+    }, {
+        "Type": { "Id": "14eec96087f5437bbb98f6b43d3db5b9", "Name": "MoveSpeed" },
+        "Properties": {
+            "speed": 10
+        }
+    }, {
+        "Type": { "Id": "c895dbe72eb46ecb10d589d320151758", "Name": "TransformNode" }
+    }]
+}]

@@ -1,0 +1,21 @@
+﻿[{
+    "$TypeId": 3,
+    "Id": "575129ceb6a0422ea50e14fea25c1dcc",
+    "Name": "FloatingLetter",
+    "ExportFlags": 0,
+    "Unlisted": false,
+    "Visibility": 0,
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "7c216b12590e481691deaee584338646",
+        "Name": "offset",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "575129ceb6a0422ea50e14fea25c1dcc", "Name": "FloatingLetter" }
+    }
+}]

@@ -1,0 +1,40 @@
+﻿[{
+    "$TypeId": 3,
+    "Id": "b113e9da67564a98b1b37d144da7e757",
+    "Name": "CubeData",
+    "ExportFlags": 0,
+    "Unlisted": false,
+    "Visibility": 0,
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "27bc78e7f07644398c2047b1ca2becc5",
+        "Name": "startX",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }, {
+        "Id": "93cbe82ab7654e8f82460b90316a6974",
+        "Name": "startY",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }, {
+        "Id": "9c0a90e371ec410bb4fd41d80cf8395c",
+        "Name": "startDistance",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "b113e9da67564a98b1b37d144da7e757", "Name": "CubeData" },
+        "Properties": {
+            "startDistance": 30
+        }
+    }
+}]

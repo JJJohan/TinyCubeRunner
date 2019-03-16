@@ -1,0 +1,12 @@
+﻿[{
+    "$TypeId": 3,
+    "Id": "a6c8f1ed2b684c48b61bbe02d0729b59",
+    "Name": "Highscore",
+    "ExportFlags": 0,
+    "Unlisted": false,
+    "Visibility": 0,
+    "TypeCode": "Component",
+    "DefaultValue": {
+        "Type": { "Id": "a6c8f1ed2b684c48b61bbe02d0729b59", "Name": "Highscore" }
+    }
+}]
