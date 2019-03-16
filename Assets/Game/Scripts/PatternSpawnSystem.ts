@@ -1,8 +1,36 @@
-
 namespace game {
     export class PatternSpawnSystem extends ut.ComponentSystem {
+        
+        public static loadPatterns() {
+            ut.JsonUtility.loadAssetAsync("patterns", (error, data) => {
+                if (error) {
+                  throw new Error(error);
+                }
+
+                for (let i = 0; i < data.patterns.length; ++i) {
+                    const pattern: Pattern = new Pattern();
+                    const dataLines: string[] = data.patterns[i];
+                    for (let j = 0; j < dataLines.length; ++j) {
+                        const dataLine: string = dataLines[j];
+                        if (dataLine.length !== 10) {
+                            throw new Error("All pattern lines must be 10 characters long.");
+                        }
+
+                        pattern.lines.push(dataLine);
+                    }
+
+                    this.patterns.push(pattern);
+                }
+
+                this.patternsLoaded = true;
+              });
+        }
+
+        private static patterns: Pattern[] = [];
+        private static patternsLoaded: boolean = false;
+
         public OnUpdate(): void {
-            if (GameService.gameOver) {
+            if (GameService.gameOver || !PatternSpawnSystem.patternsLoaded) {
                 return;
             }
 
@@ -17,18 +45,18 @@ namespace game {
 
                     // Add a cube spawner.
                     const spawnerEntity: ut.Entity = this.world.createEntity();
-                    const startPosX: number = getRandom(-3.5, 3.5);
                     const cubeSpawner: game.CubeSpawner = new game.CubeSpawner();
-                    cubeSpawner.startX = startPosX;
+                    cubeSpawner.pattern = this.getRandomPattern();
                     this.world.addComponentData(spawnerEntity, cubeSpawner);
                 }
 
                 spawner.time = time;
             });
         }
-    }
 
-    function getRandom(min, max) {
-        return Math.random() * (max - min) + min;
+        private getRandomPattern(): Pattern {
+            const index: number = (Math.random() * (PatternSpawnSystem.patterns.length + 1));
+            return PatternSpawnSystem.patterns[index];
+        };
     }
 }

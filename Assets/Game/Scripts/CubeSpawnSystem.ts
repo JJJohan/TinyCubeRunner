@@ -18,10 +18,10 @@ namespace game {
                 const cube: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeGroup")[0];
 
                 const cubeData: game.CubeData = this.world.getComponentData(cube, game.CubeData);
-                cubeData.startX = spawner.startX;
+                cubeData.startX = 123.0;
                 this.world.setComponentData(cube, cubeData);
 
-                const cubePos: Vector3 = new Vector3(spawner.startX, 0.0, cubeData.startDistance);
+                const cubePos: Vector3 = new Vector3(123.0, 0.0, cubeData.startDistance);
                 this.world.addComponentData(cube, new ut.Core2D.TransformLocalPosition(cubePos));
 
                 let i: number;

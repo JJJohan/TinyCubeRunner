@@ -8,14 +8,32 @@
     "TypeCode": "Component",
     "Fields": [{
         "Id": "5a0c25c889484e45853f78cd3e450e18",
-        "Name": "startX",
-        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Name": "pattern",
+        "FieldType": { "Id": "6ae3044cc143469891dbab3161aaeeb5", "Name": "Pattern" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }, {
+        "Id": "d995984c773744809a0b18bde6c611dc",
+        "Name": "linesLoaded",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" },
         "Array": false,
         "Visibility": 0,
         "EditorOnly": false,
         "Versioned": true
     }],
     "DefaultValue": {
-        "Type": { "Id": "0bcc18be69ee4c4db82a581eac3d2745", "Name": "CubeSpawner" }
+        "Type": { "Id": "0bcc18be69ee4c4db82a581eac3d2745", "Name": "CubeSpawner" },
+        "Properties": {
+            "pattern": {
+                "Type": { "Id": "6ae3044cc143469891dbab3161aaeeb5", "Name": "Pattern" },
+                "Properties": {
+                    "lines": {
+                        "Type": { "Id": "1bff5adddd7c41de98d3329c7c641208", "Name": "String" }
+                    }
+                }
+            }
+        }
     }
 }]

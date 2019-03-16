@@ -8,7 +8,7 @@ namespace game {
             // Restart the game on tap, without the menu present.
             this.world.forEach([game.RestartOnTap], (tapToRestart) => {
                 if (ut.Runtime.Input.getMouseButtonDown(0) || (ut.Runtime.Input.isTouchSupported && ut.Runtime.Input.touchCount() > 0)) {
-                    GameService.restart(this.world, 0, false);
+                    GameService.restart(this.world, false);
                 }
             });
 

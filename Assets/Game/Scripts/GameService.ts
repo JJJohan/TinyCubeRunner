@@ -7,14 +7,12 @@ namespace game {
         public static score: number = 0;
         public static highscore: number = 0;
 
-        public static linkCanvas(world: ut.World, canvasEntity: ut.Entity) {
-            const camEntity: ut.Entity = world.getEntityByName("Camera");
-            const canvas: ut.UILayout.UICanvas = world.getComponentData(canvasEntity, ut.UILayout.UICanvas);
-            canvas.camera = camEntity;
-            world.setComponentData(canvasEntity, canvas);
-        }
-
         public static init(world: ut.World) {
+            if (!this.oneTimeInit) {
+                this.startup();
+                this.oneTimeInit = true;
+            }
+
             if (this.menuVisible) {
                 ut.EntityGroup.instantiate(world, this.titleGroup);
 
@@ -45,21 +43,6 @@ namespace game {
                 highscoreText.text = "Best: " + this.highscore.toFixed(0);
                 world.setComponentData(highscoreEntity, highscoreText);
             }
-
-            // Initialise projection matrix.
-            // Note: Aspect ratio is always 1.0 due to the camera auto scaling for some reason.
-            const deg2Rad: number = Math.PI / 180.0;
-            const near: number = 0.01;
-            const far: number = 30.0;
-            const vFOV: number = 80.0;
-            const fovScale: number = 1.0 / Math.tan(deg2Rad * vFOV / 2.0);
-            const clipRange: number = near - far;
-            this.projMatrix = new utmath.Matrix4();
-            this.projMatrix.set(
-                fovScale, 0.0, 0.0, 0.0,
-                0.0, fovScale, 0.0, 0.0,
-                0.0, 0.0, (far + near) / clipRange, -1.0,
-                0.0, 0.0, 2.0 * far * near / clipRange, 0.0);
         }
         public static triggerGameOver(world: ut.World) {
             this.gameOver = true;
@@ -78,16 +61,7 @@ namespace game {
             }, this.gameOverDelay);
         }
 
-        public static restart(world: ut.World, delay: number, showTitle: boolean) {
-            if (delay <= 0) {
-                this.newGame(world, showTitle);
-            } else {
-                setTimeout(() => {
-                    this.newGame(world, showTitle);
-                }, delay);
-            }
-        }
-        public static newGame(world: ut.World, showTitle: boolean) {
+        public static restart(world: ut.World, showTitle: boolean) {
             ut.Time.reset();
 
             this.score = 0;
@@ -117,5 +91,33 @@ namespace game {
         private static gameUiGroup: string = "game.GameUIGroup";
         private static gameOverGroup: string = "game.GameOverGroup";
         private static gameOverDelay: number = 1000;
+        private static oneTimeInit: boolean = false;
+
+        private static linkCanvas(world: ut.World, canvasEntity: ut.Entity) {
+            const camEntity: ut.Entity = world.getEntityByName("Camera");
+            const canvas: ut.UILayout.UICanvas = world.getComponentData(canvasEntity, ut.UILayout.UICanvas);
+            canvas.camera = camEntity;
+            world.setComponentData(canvasEntity, canvas);
+        }
+
+        private static startup() {
+            // Initialise projection matrix.
+            // Note: Aspect ratio is always 1.0 due to the camera auto scaling for some reason.
+            const deg2Rad: number = Math.PI / 180.0;
+            const near: number = 0.01;
+            const far: number = 30.0;
+            const vFOV: number = 80.0;
+            const fovScale: number = 1.0 / Math.tan(deg2Rad * vFOV / 2.0);
+            const clipRange: number = near - far;
+            this.projMatrix = new utmath.Matrix4();
+            this.projMatrix.set(
+                fovScale, 0.0, 0.0, 0.0,
+                0.0, fovScale, 0.0, 0.0,
+                0.0, 0.0, (far + near) / clipRange, -1.0,
+                0.0, 0.0, 2.0 * far * near / clipRange, 0.0);
+
+            // Load cube patterns.
+            PatternSpawnSystem.loadPatterns();
+        }
     }
 }
