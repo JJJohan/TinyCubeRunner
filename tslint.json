@@ -1,5 +1,11 @@
 {
     "extends": "tslint:recommended",
+	"linterOptions": {
+      "exclude": [
+          "Library/**/*.ts",
+		  "Assets/Game/Scripts/Time.ts"
+      ]
+    },
     "rules": {
 		"no-namespace": false,
 		"completed-docs": false,

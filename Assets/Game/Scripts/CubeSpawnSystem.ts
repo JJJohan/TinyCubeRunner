@@ -1,6 +1,4 @@
-
 namespace game {
-    /** New System */
     export class CubeSpawnSystem extends ut.ComponentSystem {
 
         public static frontColour: ut.Core2D.Color = new ut.Core2D.Color(1.0, 0.9, 0.2, 1.0);
@@ -48,19 +46,19 @@ namespace game {
 
                     const faceData: game.CubeFaceData = new game.CubeFaceData();
                     let faceColour: ut.Core2D.Color;
-                    if (i == 0) {
+                    if (i === 0) {
                         faceData.vertices = [new Vector3(-cubeScale, -cubeScale, 0.0), new Vector3(-cubeScale, cubeScale, 0.0), new Vector3(cubeScale, cubeScale, 0.0), new Vector3(cubeScale, -cubeScale, 0.0)];
                         faceColour = CubeSpawnSystem.frontColour;
                         zDepth = -cubeScale;
-                    } else if (i == 1) {
+                    } else if (i === 1) {
                         faceData.vertices = [new Vector3(-cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(-cubeScale, cubeScale, cubeScale * 4.0), new Vector3(-cubeScale, cubeScale, 0.0), new Vector3(-cubeScale, -cubeScale, 0.0)];
                         faceColour = CubeSpawnSystem.sideColour;
                         zDepth = sideDepth;
-                    } else if (i == 2) {
+                    } else if (i === 2) {
                         faceData.vertices = [new Vector3(-cubeScale, -cubeScale, 0.0), new Vector3(-cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, 0.0)];
                         faceColour = CubeSpawnSystem.topColour;
                         zDepth = topDepth;
-                    } else if (i == 3) {
+                    } else if (i === 3) {
                         faceData.vertices = [new Vector3(cubeScale, -cubeScale, 0.0), new Vector3(cubeScale, cubeScale, 0.0), new Vector3(cubeScale, cubeScale, cubeScale * 4.0), new Vector3(cubeScale, -cubeScale, cubeScale * 4.0)];
                         faceColour = CubeSpawnSystem.sideColour;
                         zDepth = sideDepth;

@@ -1,22 +1,18 @@
 
-namespace game
-{
+namespace game {
     export class PatternSpawnSystem extends ut.ComponentSystem {
-        public OnUpdate(): void
-        {
+        public OnUpdate(): void {
             if (GameService.gameOver) {
                 return;
             }
 
-            this.world.forEach([game.PatternSpawner], (spawner) =>
-            {
+            this.world.forEach([game.PatternSpawner], (spawner) => {
                 let time: number = spawner.time;
                 const delay: number = spawner.delay;
 
                 time -= ut.Time.deltaTime();
 
-                if (time <= 0)
-                {
+                if (time <= 0) {
                     time += delay;
 
                     // Add a cube spawner.

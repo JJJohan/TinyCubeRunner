@@ -78,8 +78,7 @@ namespace game {
             }, this.gameOverDelay);
         }
 
-        public static restart(world: ut.World, delay: number, showTitle: boolean)
-        {
+        public static restart(world: ut.World, delay: number, showTitle: boolean) {
             if (delay <= 0) {
                 this.newGame(world, showTitle);
             } else {

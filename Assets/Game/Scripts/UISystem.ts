@@ -1,5 +1,4 @@
-namespace game
-{
+namespace game {
     export class UISystem extends ut.ComponentSystem {
         private titleWaveSpeed: number = 2.0;
         private titleWaveMagnitude: number = 0.25;
@@ -28,16 +27,14 @@ namespace game
             });
 
             // Update score.
-            this.world.forEach([game.Score, ut.Text.Text2DRenderer], (score, text) =>
-            {
+            this.world.forEach([game.Score, ut.Text.Text2DRenderer], (score, text) => {
                 // Updating score in UI system, naughty..
                 GameService.score += this.scorePerFrame * dt;
                 text.text = "Score: " + GameService.score.toFixed(0);
             });
 
             // Update highscore.
-            this.world.forEach([game.Highscore, ut.Text.Text2DRenderer], (score, text) =>
-            {
+            this.world.forEach([game.Highscore, ut.Text.Text2DRenderer], (score, text) => {
                 if (GameService.score > GameService.highscore) {
                     GameService.highscore = GameService.score;
                     text.text = "Best: " + GameService.highscore.toFixed(0);

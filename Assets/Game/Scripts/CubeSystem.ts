@@ -1,6 +1,5 @@
 namespace game {
-    export class CubeSystem extends ut.ComponentSystem
-    {
+    export class CubeSystem extends ut.ComponentSystem {
         public gameOverDistance: number = 0.275;
 
         public OnUpdate(): void {
@@ -11,13 +10,11 @@ namespace game {
             const dt: number = ut.Time.deltaTime();
 
             // Move cube, destroy if Z past 0.0.
-            this.world.forEach([game.MoveSpeed, game.CubeData, ut.Core2D.TransformLocalPosition, ut.Entity], (speed, data, position, entity) =>
-            {
+            this.world.forEach([game.MoveSpeed, game.CubeData, ut.Core2D.TransformLocalPosition, ut.Entity], (speed, data, position, entity) => {
                 const localPosition: Vector3 = position.position;
                 localPosition.z -= speed.speed * dt;
 
-                if (localPosition.z <= 0.0)
-                {
+                if (localPosition.z <= 0.0) {
                     ut.Core2D.TransformService.destroyTree(this.world, entity);
                 } else {
                     localPosition.x = data.startX + GameService.camOffset.x;
@@ -40,8 +37,7 @@ namespace game {
             });
 
             // Project cube vertices and fake fade-in.
-            this.world.forEach([game.CubeFaceData, ut.Core2D.Shape2D, ut.Core2D.Shape2DRenderer, ut.Core2D.TransformNode], (faceData, shape, renderer, transform) =>
-            {
+            this.world.forEach([game.CubeFaceData, ut.Core2D.Shape2D, ut.Core2D.Shape2DRenderer, ut.Core2D.TransformNode], (faceData, shape, renderer, transform) => {
                 const parentTransform: ut.Core2D.TransformLocalPosition = this.world.getComponentData(transform.parent, ut.Core2D.TransformLocalPosition);
                 const parentPos: Vector3 = parentTransform.position;
 
