@@ -13,29 +13,29 @@ namespace game
 
         OnUpdate():void 
 		{
+			if (GameService.gameOver) {
+				return;
+			}
+
 			this.world.forEach([ut.Entity, game.CubeSpawner], (entity, spawner) => 
 			{
-				if (GameService.gameOver) {
-					this.world.destroyEntity(entity);
-					return;
-				}
+				ut.Core2D.TransformService.destroyTree(this.world, entity);
 
 				let cube: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeGroup")[0];
-
+	
 				let cubeData: game.CubeData = this.world.getComponentData(cube, game.CubeData);
 				cubeData.startX = spawner.startX;
+				this.world.setComponentData(cube, cubeData);
 
-				let newPos: Vector3 = new Vector3(spawner.startX, 0.0, cubeData.startDistance);			
-				let position: ut.Core2D.TransformLocalPosition = new ut.Core2D.TransformLocalPosition(newPos);
-				this.world.addComponentData(cube,position);
-				console.log('Spawned a cube at X - ' + spawner.startX);	
+				let cubePos: Vector3 = new Vector3(spawner.startX, 0.0, cubeData.startDistance);
+				this.world.addComponentData(cube, new ut.Core2D.TransformLocalPosition(cubePos));
 
 				let i: number;
 				const visibleFaces: number = 4;
 				for (i = 0; i < visibleFaces; i++)
 				{
-					let cubeFace: ut.Entity = this.world.createEntity();				
-					this.world.addComponentData(cubeFace, new ut.Core2D.TransformNode(cube));
+					let cubeFace: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeFaceGroup")[0];
+					this.world.setComponentData(cubeFace, new ut.Core2D.TransformNode(cube));
 
 					let zDepth: number;
 					const cubeScale: number = 0.25;
@@ -81,16 +81,13 @@ namespace game
 						zDepth = sideDepth;
 					}
 					faceData.startColour = faceColour;
-					this.world.addComponentData(cubeFace, faceData);
-					this.world.setComponentData(cube, cubeData);
+					this.world.setComponentData(cubeFace, faceData);
 											
-					let facePos: Vector3 = new Vector3(0.0, 0.0, zDepth);
-					this.world.addComponentData(cubeFace, new ut.Core2D.TransformLocalPosition(facePos));	
-					this.world.addComponentData(cubeFace, new ut.Core2D.Shape2D(this.vertices, this.indices));
+					let facePos: Vector3 = new Vector3(0.0, 0.0, zDepth)
+					this.world.setComponentData(cubeFace, new ut.Core2D.TransformLocalPosition(facePos));
+					this.world.addComponentData(cubeFace, new ut.Core2D.Shape2D(this.vertices, this.indices));									
 					this.world.addComponentData(cubeFace, new ut.Core2D.Shape2DRenderer(cubeFace, faceColour));
 				}
-
-				this.world.destroyEntity(entity);
 			});
         }
     }

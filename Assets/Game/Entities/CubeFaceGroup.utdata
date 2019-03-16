@@ -1,0 +1,25 @@
+﻿[{
+    "$TypeId": 4,
+    "Id": "5f481bd4537b47099baf839c1edf7840",
+    "Name": "CubeFaceGroup",
+    "ExportFlags": 0,
+    "SerializedVersion": 0,
+    "Entities": [
+        { "$TypeId": 9, "Id": "1c3f7e47fbe949d198f2ad3a94cf5893", "Name": "CubeFace" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "1c3f7e47fbe949d198f2ad3a94cf5893",
+    "Name": "CubeFace",
+    "Enabled": true,
+    "Static": false,
+    "Layer": 0,
+    "Components": [{
+        "Type": { "Id": "4f75aa6994e146b19fa6a0f8f2a179a7", "Name": "CubeFaceData" }
+    }, {
+        "Type": { "Id": "c895dbe72eb46ecb10d589d320151758", "Name": "TransformNode" }
+    }, {
+        "Type": { "Id": "70449d66178e0d9f66795c24f0fbbdfc", "Name": "TransformLocalPosition" }
+    }]
+}]

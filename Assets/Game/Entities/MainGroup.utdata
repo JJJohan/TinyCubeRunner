@@ -24,9 +24,9 @@
             "backgroundColor": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
-                    "r": 0.6603774,
-                    "g": 0.6448025,
-                    "b": 0.6448025,
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
                     "a": 1
                 }
             },
@@ -56,7 +56,11 @@
     }, {
         "Type": { "Id": "70449d66178e0d9f66795c24f0fbbdfc", "Name": "TransformLocalPosition" }
     }, {
-        "Type": { "Id": "06a0d4c3e0284ce8b15fcb2e78750c09", "Name": "PatternSpawner" }
+        "Type": { "Id": "06a0d4c3e0284ce8b15fcb2e78750c09", "Name": "PatternSpawner" },
+        "Properties": {
+            "time": 0.25,
+            "delay": 0.25
+        }
     }]
 },
 {

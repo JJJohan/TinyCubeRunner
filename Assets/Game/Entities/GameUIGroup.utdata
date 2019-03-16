@@ -50,7 +50,6 @@
     }, {
         "Type": { "Id": "757a06c4ae1ec5fccccd28eb89a6dc54", "Name": "UICanvas" },
         "Properties": {
-            "camera": { "$TypeId": 9, "Id": "c6da368eb1cb46758e07dc0784c70334", "Name": "Camera" },
             "referenceResolution": {
                 "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
                 "Properties": {

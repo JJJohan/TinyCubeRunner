@@ -26,7 +26,7 @@ namespace game
 				else
 				{
 					localPosition.x = data.startX + GameService.camOffset.x;
-					localPosition.y = data.startY + GameService.camOffset.y;
+					localPosition.y = GameService.camOffset.y;
 					position.position = localPosition;
 				}
 

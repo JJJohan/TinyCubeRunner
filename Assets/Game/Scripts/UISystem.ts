@@ -9,7 +9,7 @@ namespace game
         OnUpdate():void
 		{
 			// Restart the game on tap, without the menu present.
-			this.world.forEach([ut.Entity, game.RestartOnTap], (entity, tapToRestart) => 
+			this.world.forEach([game.RestartOnTap], (tapToRestart) => 
 			{
 				if (ut.Runtime.Input.getMouseButtonDown(0) || (ut.Runtime.Input.isTouchSupported && ut.Runtime.Input.touchCount() > 0))
 				{
@@ -34,7 +34,7 @@ namespace game
 			});
 
 			// Update score.
-			this.world.forEach([ut.Entity, game.Score, ut.Text.Text2DRenderer], (entity, score, text) => 
+			this.world.forEach([game.Score, ut.Text.Text2DRenderer], (score, text) => 
 			{
 				// Updating score in UI system, naughty..
 				GameService.score += this.scorePerFrame * dt;
@@ -42,7 +42,7 @@ namespace game
 			});
 
 			// Update highscore.
-			this.world.forEach([ut.Entity, game.Highscore, ut.Text.Text2DRenderer], (entity, score, text) => 
+			this.world.forEach([game.Highscore, ut.Text.Text2DRenderer], (score, text) => 
 			{
 				if (GameService.score > GameService.highscore)
 				{

@@ -4,6 +4,7 @@ namespace game
     {    
         private static mainGroup: string = 'game.MainGroup';
         private static cubeGroup: string = 'game.CubeGroup';
+        private static cubeFaceGroup: string = 'game.CubeFaceGroup';
 		private static titleGroup: string = 'game.TitleGroup';
 		private static gameUiGroup: string = 'game.GameUIGroup';
 		private static gameOverGroup: string = 'game.GameOverGroup';
@@ -115,11 +116,11 @@ namespace game
 			this.gameOver = false;
 
 			ut.EntityGroup.destroyAll(world, this.cubeGroup);
+			ut.EntityGroup.destroyAll(world, this.cubeFaceGroup);
 			ut.EntityGroup.destroyAll(world, this.titleGroup);
 			ut.EntityGroup.destroyAll(world, this.gameUiGroup);
-			ut.EntityGroup.destroyAll(world, this.mainGroup);
 			ut.EntityGroup.destroyAll(world, this.gameOverGroup);
-			world.debugCheckEntities();
+			ut.EntityGroup.destroyAll(world, this.mainGroup);
 
 			ut.EntityGroup.instantiate(world, this.mainGroup);
 

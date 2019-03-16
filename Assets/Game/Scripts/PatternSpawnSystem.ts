@@ -6,14 +6,12 @@ namespace game
 	{
 	    OnUpdate():void 
 		{
+			if (GameService.gameOver) {
+				return;
+			}
 
-			this.world.forEach([ut.Entity, game.PatternSpawner], (entity, spawner) => 
+			this.world.forEach([game.PatternSpawner], (spawner) => 
 			{
-				if (GameService.gameOver) {
-					this.world.destroyEntity(entity);
-					return;
-				}
-
 				let time: number = spawner.time;
 				let delay: number = spawner.delay;
 				
