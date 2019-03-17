@@ -39,7 +39,7 @@ namespace game {
                     const cube: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeGroup")[0];
 
                     const cubeData: game.CubeData = this.world.getComponentData(cube, game.CubeData);
-                    const cubePos: Vector3 = new Vector3(-5.5 + i, 0.0, cubeData.startDistance);
+                    const cubePos: Vector3 = new Vector3(-4.5 + i, 0.0, cubeData.startDistance);
                     cubeData.startX = cubePos.x;
                     this.world.setComponentData(cube, cubeData);
 

@@ -66,6 +66,7 @@ namespace game {
                 index = Math.floor(Math.random() * PatternSpawnSystem.patterns.length);
             }
 
+            this.lastPatternIndex = index;
             return PatternSpawnSystem.patterns[index];
         }
     }
