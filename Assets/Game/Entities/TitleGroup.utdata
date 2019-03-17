@@ -748,7 +748,7 @@
     }, {
         "Type": { "Id": "00d6bc791188d69186aa19bf8f6652a8", "Name": "RectTransformFinalSize" }
     }, {
-        "Type": { "Id": "d03ea444878c4cd19be56475ae1b5102", "Name": "DeleteOnEnter" }
+        "Type": { "Id": "d03ea444878c4cd19be56475ae1b5102", "Name": "RestartOnTap" }
     }]
 },
 {
