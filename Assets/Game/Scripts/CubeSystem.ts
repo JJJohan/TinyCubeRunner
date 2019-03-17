@@ -1,6 +1,6 @@
 namespace game {
     export class CubeSystem extends ut.ComponentSystem {
-        public gameOverDistance: number = 0.275;
+        private gameOverDistance: number = 0.275;
 
         public OnUpdate(): void {
             if (GameService.gameOver) {
@@ -27,7 +27,7 @@ namespace game {
                     // Move all cubes back to prevent rendering over the UI.
                     this.world.forEach([game.CubeData, ut.Core2D.TransformLocalPosition, ut.Entity], (data, position, entity) => {
                         const localPosition: Vector3 = position.position;
-                        localPosition.z += 10.0;
+                        localPosition.z += 0.1;
                         position.position = localPosition;
                     });
 
@@ -44,8 +44,7 @@ namespace game {
                 const faceVertices: Vector3[] = faceData.vertices;
                 const shapeVertices: Vector2[] = shape.vertices;
 
-                let i: number;
-                for (i = 0; i < 4; i++) {
+                for (let i = 0; i < 4; i++) {
                     let vert: Vector3 = new Vector3(parentPos.x + faceVertices[i].x, parentPos.y + faceVertices[i].y, parentPos.z + faceVertices[i].z);
                     vert = vert.applyMatrix4(GameService.projMatrix);
                     shapeVertices[i].x = vert.x;

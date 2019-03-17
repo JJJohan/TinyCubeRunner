@@ -66,6 +66,7 @@ namespace game {
 
             this.score = 0;
             this.gameOver = false;
+            CubeSpawnSystem.spawnExists = false;
 
             ut.EntityGroup.destroyAll(world, this.cubeGroup);
             ut.EntityGroup.destroyAll(world, this.cubeFaceGroup);

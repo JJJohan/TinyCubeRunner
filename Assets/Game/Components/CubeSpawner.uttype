@@ -22,6 +22,14 @@
         "Visibility": 0,
         "EditorOnly": false,
         "Versioned": true
+    }, {
+        "Id": "242cc8009d3041d0b3d9ed2e0c18fc2d",
+        "Name": "spawnTimer",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
     }],
     "DefaultValue": {
         "Type": { "Id": "0bcc18be69ee4c4db82a581eac3d2745", "Name": "CubeSpawner" },

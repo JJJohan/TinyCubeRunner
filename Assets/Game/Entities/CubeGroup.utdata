@@ -16,7 +16,10 @@
     "Static": false,
     "Layer": 0,
     "Components": [{
-        "Type": { "Id": "b113e9da67564a98b1b37d144da7e757", "Name": "CubeData" }
+        "Type": { "Id": "b113e9da67564a98b1b37d144da7e757", "Name": "CubeData" },
+        "Properties": {
+            "startDistance": 50
+        }
     }, {
         "Type": { "Id": "14eec96087f5437bbb98f6b43d3db5b9", "Name": "MoveSpeed" },
         "Properties": {

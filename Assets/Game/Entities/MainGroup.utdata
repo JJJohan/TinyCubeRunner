@@ -54,11 +54,7 @@
     }, {
         "Type": { "Id": "70449d66178e0d9f66795c24f0fbbdfc", "Name": "TransformLocalPosition" }
     }, {
-        "Type": { "Id": "06a0d4c3e0284ce8b15fcb2e78750c09", "Name": "PatternSpawner" },
-        "Properties": {
-            "time": 0.25,
-            "delay": 0.25
-        }
+        "Type": { "Id": "06a0d4c3e0284ce8b15fcb2e78750c09", "Name": "PatternSpawner" }
     }]
 },
 {
