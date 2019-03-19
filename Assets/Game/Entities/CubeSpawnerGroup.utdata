@@ -1,0 +1,21 @@
+﻿[{
+    "$TypeId": 4,
+    "Id": "aed6c3c66a044c9b99ecaaf046234aef",
+    "Name": "CubeSpawnerGroup",
+    "ExportFlags": 0,
+    "SerializedVersion": 0,
+    "Entities": [
+        { "$TypeId": 9, "Id": "69ccad93c68c434f962f549b4e632497", "Name": "CubeSpawner" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "69ccad93c68c434f962f549b4e632497",
+    "Name": "CubeSpawner",
+    "Enabled": true,
+    "Static": false,
+    "Layer": 0,
+    "Components": [{
+        "Type": { "Id": "0bcc18be69ee4c4db82a581eac3d2745", "Name": "CubeSpawner" }
+    }]
+}]
