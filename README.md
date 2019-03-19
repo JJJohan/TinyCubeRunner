@@ -1,4 +1,4 @@
-# Cube Runner
+# Tiny Cube Runner
 
 ![Screenshot](https://renscreations.com/files/cuberunner/screenshot.png)
 
@@ -8,11 +8,13 @@ At the time of submission, Unity Tiny is currently developed using TypeScript (p
 I used this as an opportunity to:
 * Become more familiar with TypeScript (I've only dabbled in it a little bit.)
 * Have a go at faking a 3D game environment in a strictly 2D game framework.
-* Have a little bit of fun :).
+* Have a little bit of fun :smile:.
 
 There isn't anything revolutionary in here, but I have not seen any examples of Unity Tiny being used for anything 3D yet.
 
 ## Demo
+
+The game runs in the browser as a simple canvas element and has support for either a touch screen or keyboard/mouse.
 
 **Feel free to try the game here:**
 https://renscreations.com/files/cuberunner/
@@ -22,7 +24,8 @@ https://renscreations.com/files/cuberunner/
 The cube patterns are data-driven, read via a patterns.json file using a very simple format.
 
 An example of the pattern file with a single pattern available:
-```json{
+```json
+{
 	"patterns": 
 	[{
 		"lines":
@@ -46,4 +49,5 @@ An example of the pattern file with a single pattern available:
 		"x--------x"
 		]
 	}]
-}```
+}
+```
