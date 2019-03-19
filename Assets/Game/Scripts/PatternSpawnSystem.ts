@@ -26,10 +26,7 @@ namespace game {
                             throw new Error("All pattern lines must be 10 characters long.");
                         }
 
-                        // Count each 5 times, otherwise paths are too short.
-                        for (let k = 0; k < 5; ++k) {
-                            pattern.lines.push(dataLine);
-                        }
+                        pattern.lines.push(dataLine);
                     }
 
                     PatternSpawnSystem.patterns.push(pattern);
@@ -52,17 +49,16 @@ namespace game {
                 CubeSpawnSystem.spawnExists = true;
 
                 // Add a cube spawner.
-                const spawnerEntity: ut.Entity = this.world.createEntity();
-                const cubeSpawner: game.CubeSpawner = new game.CubeSpawner();
+                const spawnerEntity: ut.Entity = ut.EntityGroup.instantiate(this.world, "game.CubeSpawnerGroup")[0];
+                const cubeSpawner: game.CubeSpawner = this.world.getComponentData(spawnerEntity, game.CubeSpawner);
                 cubeSpawner.pattern = this.getRandomPattern();
-                this.world.addComponentData(spawnerEntity, cubeSpawner);
+                this.world.setComponentData(spawnerEntity, cubeSpawner);
             });
         }
 
         private getRandomPattern(): Pattern {
             let index: number = -1;
-            while (index === -1 || index === this.lastPatternIndex)
-            {
+            while (index === -1 || index === this.lastPatternIndex) {
                 index = Math.floor(Math.random() * PatternSpawnSystem.patterns.length);
             }
 

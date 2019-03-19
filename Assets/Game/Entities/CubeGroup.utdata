@@ -18,14 +18,11 @@
     "Components": [{
         "Type": { "Id": "b113e9da67564a98b1b37d144da7e757", "Name": "CubeData" },
         "Properties": {
-            "startDistance": 50
-        }
-    }, {
-        "Type": { "Id": "14eec96087f5437bbb98f6b43d3db5b9", "Name": "MoveSpeed" },
-        "Properties": {
-            "speed": 10
+            "startDistance": 30
         }
     }, {
         "Type": { "Id": "c895dbe72eb46ecb10d589d320151758", "Name": "TransformNode" }
+    }, {
+        "Type": { "Id": "70449d66178e0d9f66795c24f0fbbdfc", "Name": "TransformLocalPosition" }
     }]
 }]

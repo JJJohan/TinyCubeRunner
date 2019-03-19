@@ -6,10 +6,12 @@ namespace game {
         public static projMatrix: utmath.Matrix4;
         public static score: number = 0;
         public static highscore: number = 0;
+        public static cubeSpeed: number;
 
         public static init(world: ut.World) {
             if (!this.oneTimeInit) {
                 this.startup();
+                this.cubeSpeed = this.startSpeed;
                 this.oneTimeInit = true;
             }
 
@@ -33,7 +35,6 @@ namespace game {
                 }
             } else {
                 ut.EntityGroup.instantiate(world, this.gameUiGroup);
-
                 const canvasEntity: ut.Entity = world.getEntityByName("GameUICanvas");
                 this.linkCanvas(world, canvasEntity);
 
@@ -66,10 +67,12 @@ namespace game {
 
             this.score = 0;
             this.gameOver = false;
+            this.cubeSpeed = this.startSpeed;
             CubeSpawnSystem.spawnExists = false;
 
             ut.EntityGroup.destroyAll(world, this.cubeGroup);
             ut.EntityGroup.destroyAll(world, this.cubeFaceGroup);
+            ut.EntityGroup.destroyAll(world, this.cubeSpawnerGroup);
             ut.EntityGroup.destroyAll(world, this.titleGroup);
             ut.EntityGroup.destroyAll(world, this.gameUiGroup);
             ut.EntityGroup.destroyAll(world, this.gameOverGroup);
@@ -88,11 +91,13 @@ namespace game {
         private static mainGroup: string = "game.MainGroup";
         private static cubeGroup: string = "game.CubeGroup";
         private static cubeFaceGroup: string = "game.CubeFaceGroup";
+        private static cubeSpawnerGroup: string = "game.CubeSpawnerGroup";
         private static titleGroup: string = "game.TitleGroup";
         private static gameUiGroup: string = "game.GameUIGroup";
         private static gameOverGroup: string = "game.GameOverGroup";
         private static gameOverDelay: number = 1000;
         private static oneTimeInit: boolean = false;
+        private static startSpeed: number = 10.0;
 
         private static linkCanvas(world: ut.World, canvasEntity: ut.Entity) {
             const camEntity: ut.Entity = world.getEntityByName("Camera");

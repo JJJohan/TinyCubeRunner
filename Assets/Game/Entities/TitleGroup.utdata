@@ -119,7 +119,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": 1102748452569219072, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -175,7 +175,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": -3952504333441957888, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -229,7 +229,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": -1523482211934797824, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -283,7 +283,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": -6345505354511548416, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -337,7 +337,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": 5730952571619639296, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -391,7 +391,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": -3952504333441957888, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -445,7 +445,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": 8943395694492778496, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -499,7 +499,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": 8943395694492778496, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -553,7 +553,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": -6345505354511548416, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -607,7 +607,7 @@
     }, {
         "Type": { "Id": "1c504a8a7963db0d32e89b527b90e057", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "1c7b7ecd6845c07418c4689fd4b668f0", "FileId": 5730952571619639296, "Type": 3 },
+            "sprite": { "$TypeId": 10 },
             "color": {
                 "Type": { "Id": "2a90a1633d6dc16cd37cdfaca7b93cea", "Name": "Color" },
                 "Properties": {
@@ -748,7 +748,7 @@
     }, {
         "Type": { "Id": "00d6bc791188d69186aa19bf8f6652a8", "Name": "RectTransformFinalSize" }
     }, {
-        "Type": { "Id": "d03ea444878c4cd19be56475ae1b5102", "Name": "RestartOnTap" }
+        "Type": { "Id": "d03ea444878c4cd19be56475ae1b5102", "Name": "DeleteOnEnter" }
     }]
 },
 {
@@ -853,7 +853,7 @@
                     "a": 1
                 }
             },
-            "size": 36
+            "size": 28
         }
     }, {
         "Type": { "Id": "0481d22c456081a992e7c7ee42da6c19", "Name": "Text2DStyleBitmapFont" },

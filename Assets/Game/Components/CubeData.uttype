@@ -22,11 +22,36 @@
         "Visibility": 0,
         "EditorOnly": false,
         "Versioned": true
+    }, {
+        "Id": "da5305e9afa64ad2bda1fbe682d31c73",
+        "Name": "posX",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }, {
+        "Id": "f7b4551f1b094b7b9a1e2ef986c08b57",
+        "Name": "posY",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
+    }, {
+        "Id": "3fdfa31c77ea48209b5045004fb79d96",
+        "Name": "posZ",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" },
+        "Array": false,
+        "Visibility": 0,
+        "EditorOnly": false,
+        "Versioned": true
     }],
     "DefaultValue": {
         "Type": { "Id": "b113e9da67564a98b1b37d144da7e757", "Name": "CubeData" },
         "Properties": {
-            "startDistance": 30
+            "startDistance": 30,
+            "posZ": 30
         }
     }
 }]
